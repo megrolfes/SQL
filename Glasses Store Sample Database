@@ -1,0 +1,31 @@
+-- create the glasses store database
+CREATE TABLE glasses (id INTEGER PRIMARY KEY, style TEXT, color TEXT, price INTEGER, quantity_instock INTEGER);
+
+--insert values into the glasses database
+INSERT INTO glasses VALUES (1, "Round", "Black", 50, 10);
+INSERT INTO glasses VALUES (2, "Cat-Eye", "Blue", 45, 15);
+INSERT INTO glasses VALUES (3, "Square", "Red", 45, 8);
+INSERT INTO glasses VALUES (4, "Aviator", "Gold", 55, 5);
+INSERT INTO glasses VALUES (5, "Rectangle", "Silver", 45, 10);
+INSERT INTO glasses VALUES (6, "Round" , "Gold", 50, 15);
+INSERT INTO glasses VALUES (7, "Cat-Eye", "Black", 45, 10);
+INSERT INTO glasses VALUES (8, "Square", "Gold", 50, 5);
+INSERT INTO glasses VALUES (9, "Aviator", "Black", 50, 8);
+INSERT INTO glasses VALUES (10, "Rectangle", "Green", 45, 12);
+INSERT INTO glasses VALUES (11, "Oval", "Black", 45, 10);
+INSERT INTO glasses VALUES (12, "Oval", "Gray", 45, 8);
+INSERT INTO glasses VALUES (13, "Oversized", "Gold", 55, 12);
+INSERT INTO glasses VALUES (14, "Oversized", "Black", 50, 10);
+INSERT INTO glasses VALUES (15, "Aviator", "Silver", 50, 8);
+
+-- display items ordered by price
+SELECT * FROM glasses 
+ORDER BY price;
+
+-- display quantity in stock from least to most for each style 
+SELECT style, SUM(quantity_instock) FROM glasses 
+GROUP BY style ORDER BY SUM(quantity_instock);
+
+-- average price for black glasses?
+SELECT avg(price) FROM glasses 
+WHERE color="Black";
